@@ -1,0 +1,60 @@
+on:
+  push:
+    branches: [master]
+
+jobs:
+  copy-frontend-to-netlify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+
+      - name: Set up Git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Prepare frontend artifacts
+        run: |
+          rm -rf temp && mkdir temp
+          cp -r frontend/* temp/
+          cd temp
+          # Optional: add .gitignore or Netlify config if needed
+
+      - name: Switch to netlify branch and copy files
+        run: |
+          git fetch origin netlify:netlify || git checkout --orphan netlify
+          git checkout netlify
+          git rm -rf . || true
+          cp -r ../temp/* .
+          git add .
+          git commit -m "Update frontend from master" || echo "No changes to commit"
+          git push origin netlify
+
+  copy-backend-to-heroku:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+
+      - name: Set up Git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Prepare backend artifacts
+        run: |
+          rm -rf temp && mkdir temp
+          cp -r backend/* temp/
+          cd temp
+          # Optional: add .gitignore or Heroku config if needed
+
+      - name: Switch to heroku branch and copy files
+        run: |
+          git fetch origin heroku:heroku || git checkout --orphan heroku
+          git checkout heroku
+          git rm -rf . || true
+          cp -r ../temp/* .
+          git add .
+          git commit -m "Update backend from master" || echo "No changes to commit"
+          git push origin heroku
