@@ -1,9 +1,10 @@
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 jobs:
-  copy-frontend-to-netlify:
+  copy-frontend-to-netlify-frontend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master branch
@@ -21,17 +22,17 @@ jobs:
           cd temp
           # Optional: add .gitignore or Netlify config if needed
 
-      - name: Switch to netlify branch and copy files
+      - name: Switch to netlify-frontend branch and copy files
         run: |
-          git fetch origin netlify:netlify || git checkout --orphan netlify
-          git checkout netlify
+          git fetch origin netlify-frontend:netlify-frontend || git checkout --orphan netlify-frontend
+          git checkout netlify-frontend
           git rm -rf . || true
           cp -r ../temp/* .
           git add .
-          git commit -m "Update frontend from master" || echo "No changes to commit"
-          git push origin netlify
+          git commit -m "Update netlify-frontend from master" || echo "No changes to commit"
+          git push origin netlify-frontend
 
-  copy-backend-to-heroku:
+  copy-backend-to-heroku-backend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master branch
@@ -49,12 +50,12 @@ jobs:
           cd temp
           # Optional: add .gitignore or Heroku config if needed
 
-      - name: Switch to heroku branch and copy files
+      - name: Switch to heroku-backend branch and copy files
         run: |
-          git fetch origin heroku:heroku || git checkout --orphan heroku
-          git checkout heroku
+          git fetch origin heroku-backend:heroku-backend || git checkout --orphan heroku-backend
+          git checkout heroku-backend
           git rm -rf . || true
           cp -r ../temp/* .
           git add .
           git commit -m "Update backend from master" || echo "No changes to commit"
-          git push origin heroku
+          git push origin heroku-backend
