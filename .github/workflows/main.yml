@@ -3,23 +3,31 @@ on:
     branches: [master]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   copy-frontend-to-netlify-frontend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master branch
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Git config
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Set up git authentication
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/kjwagner613/nursery_demo_v2.git
+
       - name: Prepare frontend artifacts
         run: |
           rm -rf temp && mkdir temp
           cp -r frontend/* temp/
-         
           # Optional: add .gitignore or Netlify config if needed
 
       - name: Switch to netlify-frontend branch and copy files
@@ -37,17 +45,22 @@ jobs:
     steps:
       - name: Checkout master branch
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Git config
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Set up git authentication
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/kjwagner613/nursery_demo_v2.git
+
       - name: Prepare backend artifacts
         run: |
           rm -rf temp && mkdir temp
           cp -r backend/* temp/
-         
           # Optional: add .gitignore or Heroku config if needed
 
       - name: Switch to heroku-backend branch and copy files
