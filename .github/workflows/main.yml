@@ -19,7 +19,7 @@ jobs:
         run: |
           rm -rf temp && mkdir temp
           cp -r frontend/* temp/
-          cd temp
+         
           # Optional: add .gitignore or Netlify config if needed
 
       - name: Switch to netlify-frontend branch and copy files
@@ -27,7 +27,7 @@ jobs:
           git fetch origin netlify-frontend:netlify-frontend || git checkout --orphan netlify-frontend
           git checkout netlify-frontend
           git rm -rf . || true
-          cp -r ../temp/* .
+          cp -r temp/* .
           git add .
           git commit -m "Update netlify-frontend from master" || echo "No changes to commit"
           git push origin netlify-frontend
@@ -47,7 +47,7 @@ jobs:
         run: |
           rm -rf temp && mkdir temp
           cp -r backend/* temp/
-          cd temp
+         
           # Optional: add .gitignore or Heroku config if needed
 
       - name: Switch to heroku-backend branch and copy files
@@ -55,7 +55,7 @@ jobs:
           git fetch origin heroku-backend:heroku-backend || git checkout --orphan heroku-backend
           git checkout heroku-backend
           git rm -rf . || true
-          cp -r ../temp/* .
+          cp -r temp/* .
           git add .
           git commit -m "Update backend from master" || echo "No changes to commit"
           git push origin heroku-backend
