@@ -1,0 +1,11 @@
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  white-space: nowrap;
+}
+.product-card {
+  flex: 0 0 auto;
+  width: 200px;
+}

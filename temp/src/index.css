@@ -1,0 +1,503 @@
+@import "tailwindcss";
+
+
+:root {
+  --primary-green: #6B8E23;
+  --secondary-brown: #8B4513;
+  --background-cream: #e2c77e;
+  --text-color-dark: #213547;
+  --text-color-light: #e6e9bf;
+  --highlight-color-1: rgb(60, 78, 178);
+  --border-radius: 8px;
+  --font-main: "Playfair Display", serif;
+  --font-secondary: "Lato", sans-serif;
+  --font-size-titles: 2.5rem;
+  --font-size-headers: 1.7rem;
+
+a:hover {
+  color: var(--secondary-brown);
+}
+
+/* Responsive Light/Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-cream: #242424;
+    --text-color-dark: var(--text-color-light);
+  }
+} 
+
+.worker2 {
+  position: relative;
+  transform: scale(0.8);
+}
+
+.worker3 {
+  position: relative;
+  transform: scale(0.8);
+}
+.workers {
+  position: relative;
+
+}
+/* Add to index.css */
+.about-images {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3vh;
+  
+}
+.worker2,
+.worker3 {
+  max-width: 120px;   /* smaller width for portrait */
+  height: 220px;      /* fixed height for portrait */
+  object-fit: cover;  /* crop if needed, keeps aspect */
+  border-radius: 8px;
+}
+
+
+.about-images img {
+   border-radius: 8px; /* optional, for rounded corners */
+   margin: 0 20px; /* space between images */
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15vh;
+}
+
+/* grids for login and registration pages */
+.login-grid {
+  display: flex;
+ 
+  align-items: center;
+  gap: 2rem;
+
+}
+
+
+.login-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+ 
+
+.login-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.register-btn {
+  text-align: right;
+  text-decoration: none;
+  color: #007bff;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  align-self: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15rem;
+  justify-content: center;
+  text-align: justify;
+  margin-top: 5vh;
+  border: 2px solid var(--text-color-dark);
+  border-radius: var(--border-radius);
+  transform: height 0.5s ease-in-out;
+}
+
+
+
+
+button {
+  margin-top: 20px;
+  --b: 3px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #373B44;
+  
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover,
+button:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.button:active {
+  background: var(--color);
+  color: #fff;
+}
+
+.widget-container {
+  display: flex;
+  flex-direction: row; /* default, but explicit */
+  gap: 2rem;           /* space between widgets */
+  justify-content: center; /* optional: center them horizontally */
+  align-items: flex-start;  /* optional: align to top */
+
+}
+
+
+.weather-widget {
+position: relative;
+top: 0vh;
+right: 0vw;
+}
+
+.service-grid {
+  display: flex;
+  gap: 2rem;
+  justify-items: center; /* centers items in each grid cell */
+}
+.service-item {
+  display: grid;
+}
+
+h1 {
+  font-family: var(--font-main);
+  font-size: var(--font-size-titles);
+  color: var(--text-color-dark);
+  margin-bottom: 1rem;
+  
+}
+h2 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-headers);
+  color: var(--text-color-dark);
+  margin-bottom: 1rem;
+}
+
+
+.product-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
+.product-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.product-image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.product-details {
+  width: 50%;
+}
+
+.product-details h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-details label {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.product-details select {
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.product-details p.total-price{
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.product-details button {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: lightblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product-details button:hover {
+  background-color: deepskyblue;
+}
+
+@media screen and (max-width: 767px) {
+  .product-page {
+    flex-direction: column;
+  }
+}
+
+  .product-image-container,
+  .product-details {
+    width: 100%;
+  }
+
+  .product-image-container img {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .product-details button {
+    width: 100%;
+  }
+
+  .product-details select#qty-select {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.plum-blossom {
+  margin-left: 25vw;
+  transform: scale(0.07);
+}
+
+.IMPATIENS_wallariana {
+  margin-right: 50vw;
+  transform: scale(0.07);
+}
+.login-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 2px solid var(--text-color-dark);
+  border-radius: var(--border-radius);
+}
+ 
+
+.login-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.register-btn {
+  text-align: right;
+  text-decoration: none;
+  color: #007bff;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  align-self: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15rem;
+  justify-content: center;
+  text-align: justify;
+  margin-top: 5vh;
+  border: 2px solid var(--text-color-dark);
+  border-radius: var(--border-radius);
+  transform: height 0.5s ease-in-out;
+}
+
+
+button {
+  margin-top: 20px;
+  --b: 3px;  
+  --s: .45em; 
+  --color: var(--secondary-brown); 
+  
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover,
+button:focus-visible {
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.button:active {
+  background: var(--primary-green);
+  color: #fff;
+}
+
+.widget-container {
+  display: flex;
+  flex-direction: row; /* default, but explicit */
+  gap: 2rem;           /* space between widgets */
+  justify-content: center; /* optional: center them horizontally */
+  align-items: flex-start;  /* optional: align to top */
+
+}
+
+
+.weather-widget {
+position: relative;
+top: 0vh;
+right: 0vw;
+}
+
+.service-grid {
+  display: flexbox;
+ 
+  gap: 2rem;
+  justify-items: center; /* centers items in each grid cell */
+}
+
+
+.service-item {
+  display: grid;
+}
+
+
+
+
+.product-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
+.product-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.product-image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.product-details {
+  width: 50%;
+}
+
+.product-details h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-details label {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.product-details select {
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.product-details p.total-price{
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.product-details button {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: lightblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product-details button:hover {
+  background-color: deepskyblue;
+}
+
+@media screen and (max-width: 767px) {
+  .product-page {
+    flex-direction: column;
+  }
+
+  .product-image-container,
+  .product-details {
+    width: 100%;
+  }
+
+  .product-image-container img {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .product-details button {
+    width: 100%;
+  }
+
+  .plum-blossom {
+    margin-left: 25vw;
+    transform: scale(0.07);
+  }
+
+  .IMPATIENS_wallariana {
+    margin-right: 50vw;
+    transform: scale(0.07);
+  }
+
+  .product-details select#qty-select {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
