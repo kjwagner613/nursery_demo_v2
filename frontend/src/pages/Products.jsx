@@ -121,7 +121,8 @@ const Products = () => {
           {/* Left column: Product info and navigation */}
           <div
             className="flex flex-col items-start border-2 border-green-900 rounded-lg p-6"
-            style={{ background: "#317991#317991#317991" }}
+            style={{ background: "#e6e9bf", width: "350px", }}
+
           >
             {products.length > 0 && (
               <>
@@ -145,7 +146,6 @@ const Products = () => {
                 <p>
                   Total Price: ${(products[currentProductIndex].price * selectedQty).toFixed(2)}
                 </p>
-
 
                 {/* Product navigation */}
                 <div className="flex gap-2 mt-4">
@@ -171,7 +171,6 @@ const Products = () => {
                   >
                     Next Product
                   </button>
-
                 </div>
                 <button className="mt-7" onClick={addToPurchaseList}>Add to Cart</button>
               </>
@@ -196,19 +195,26 @@ const Products = () => {
             )}
           </div>
           {/* Right column: FlipDeckGallery and image navigation */}
-          <div className="flex flex-col items-center">
-
-            <FlipDeckGallery
-              products={products}
-              currentProductIndex={currentProductIndex}
-              setCurrentProductIndex={setCurrentProductIndex}
-              currentImageIndex={currentImageIndex}
-              setCurrentImageIndex={setCurrentImageIndex}
-            />
+          <div
+            className="flex flex-col items-center justify-center self-center border-2"
+            style={{
+              background: "#e6e9bf", width: "350px",
+              // Nudge the image to the right by adding marginLeft to the gallery container
+              paddingLeft: 8,
+            }}
+          >
+            <div style={{ width: "100%", display: "flex", justifyContent: "center", marginLeft: "4%" }}>
+              <FlipDeckGallery
+                products={products}
+                currentProductIndex={currentProductIndex}
+                setCurrentProductIndex={setCurrentProductIndex}
+                currentImageIndex={currentImageIndex}
+                setCurrentImageIndex={setCurrentImageIndex}
+              />
+            </div>
           </div>
         </div>
       </div>
-
     </div >
   );
 };

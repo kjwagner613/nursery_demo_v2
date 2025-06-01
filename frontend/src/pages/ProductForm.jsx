@@ -104,14 +104,14 @@ const ProductForm = ({ onProductAdded = () => { } }) => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded p-2"
+            className="w-full border var(--text-color-dark); -300 rounded p-2"
           />
           <select
             name="category"
             value={formData.category}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded p-2"
+            className="w-full border var(--text-color-dark); -300 rounded p-2"
           >
             <option value="">Select Category</option>
             <option value="Desert">Desert</option>
@@ -128,7 +128,7 @@ const ProductForm = ({ onProductAdded = () => { } }) => {
               value={formData.subcategory}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded p-2"
+              className="w-full border var(--text-color-dark); -300 rounded p-2"
             >
               <option value="">Select Subcategory</option>
               {formData.category === "Desert" &&
@@ -171,7 +171,7 @@ const ProductForm = ({ onProductAdded = () => { } }) => {
               value={formData.price}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded p-2"
+              className="ww-full border var(--text-color-dark); -300 rounded p-2"
             />
           </div>
           <div>
@@ -183,7 +183,7 @@ const ProductForm = ({ onProductAdded = () => { } }) => {
               min="0"
               value={formData.stock}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded p-2"
+              className="ww-full border var(--text-color-dark); -300 rounded p-2"
             />
           </div>
         </div>
@@ -195,7 +195,7 @@ const ProductForm = ({ onProductAdded = () => { } }) => {
             value={formData.active}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded p-2"
+            className="ww-full border var(--text-color-dark); -300 rounded p-2 mb-8"
           >
             <option value="">Select</option>
             <option value="true">Yes</option>
@@ -211,13 +211,13 @@ const ProductForm = ({ onProductAdded = () => { } }) => {
           className={`border-2 border-dashed p-4 mb-4 text-center cursor-pointer ${dragOver ? 'border-blue-500' : 'border-gray-300'} h-40 flex items-center justify-center`}
         >
           {formData.images.length > 0 ? (
-            <p className="text-sm">
+            <p className="text-medm">
               {formData.images.length} image(s) selected. Click or drag-drop to add more.
             </p>
           ) : (
-            <p className="text-sm">
+            <h3 className="text-med">
               Drag and drop images here, or click to select files
-            </p>
+            </h3>
           )}
         </div>
 

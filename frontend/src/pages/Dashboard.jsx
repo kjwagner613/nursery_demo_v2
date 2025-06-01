@@ -22,6 +22,7 @@ const WEATHER_QUERY_PARAMS =
 const Dashboard = () => {
   const [weatherDataList, setWeatherDataList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const user = useContext(UserContext);
 
   useEffect(() => {
     async function fetchAll() {
@@ -47,8 +48,9 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      <h2>Hello {useContext(UserContext)?.first}</h2>
+      <h1 className="pt-4">Dashboard</h1>
+      <h2 className="mb-4"> {user?.first}</h2>
+      <h2 className="mb-4">Hello {useContext(UserContext)?.first}</h2>
       {loading && <p>Loading weather...</p>}
       {!loading && weatherDataList.length > 0 && (
         <div className="widget-container">
